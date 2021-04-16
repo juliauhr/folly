@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location-based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="ui.js" defer></script>
+    <script src="shapes.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <script>
+
+    </script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-assets>
+        <img id="m_tile" src="images/tileWall.jpg">
+        <img id="m_stone" src="images/stoneWall.jpg">
+        <img id="m_brick" src="images/brickWall.jpg">
+        <img id="m_cement" src="images/cementWall.jpg">
+        <img id="m_purple" src="images/purpleWall.jpg">
+        <img id="m_window" src="images/window(2).jpg">
+        <img id="m_wood" src="images/wood.jpg">
+      </a-assets>
+
+      <a-entity id="loc" gps-entity-place="latitude:39.985095; longitude:-105.247041">
+        <a-entity id="folly" position="0 0 -10" scale="1 1 1"
+                  animation="property:rotation; from:0 0 0; to:0 360 0; easing:linear; dur:20000; loop:true; startEvents:go; resumeEvents:resume; pauseEvents:pause;">
+          <a-box id="block0" scale="5 .1 5" material="src:#m_cement"></a-box>
+        </a-entity>
+      </a-entity>
+
+      <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+
+    <div id="ui">
+      <div id="mainMenu">
+        <div id="message">
+          <b>Set your location</b>
+        </div>
+        <button onclick="getLocation()">Set location</button>
+        <button onclick="showBlockMenu()">Blocks</button>
+        <button onclick="showMoveMenu()">Move</button>
+      </div>
+
+      <div id="blockMenu">
+        <button class="xbutton" onclick="hideBlockMenu()">Back</button>
+        <img class="blockButton" onclick="addBox(0)" src="images/shapeIcon0.PNG">
+        <img class="blockButton" onclick="addBox(1)" src="images/shapeIcon1.PNG">
+        <img class="blockButton" onclick="addBox(2)" src="images/shapeIcon2.PNG">
+        <img class="blockButton" onclick="addBox(3)" src="images/shapeIcon4.PNG">
+        <button class="arrow" onclick="changeSize()">&#10530;</button>
+        <img class="blockButton" id="matButton" onclick="changeMaterial()" src="images/tileWall.jpg">
+        <button class="arrow" onclick="removeBox()">X</button>
+      </div>
+
+      <div id="moveMenu">
+      <button class="xbutton" onclick="hideMoveMenu()">Back</button>
+      <button class="arrow" onclick="moveUp()">&#8593;</button>
+      <button class="arrow" onclick="moveDown()">&#8595;</button>
+      <button class="arrow" onclick="moveLeft()">&#8592;</button>
+      <button class="arrow" onclick="moveRight()">&#8594;</button>
+      <button class="arrow" onclick="spin()">&#10555;</button>
+    </div>
+
+    </div>
+
+    <div id="startScreen">
+      <h2><u>Garden Folly Architect AR</u></h2>
+      <b>Start by setting your location<br><br>
+        Then look around for the base of your folly</b><br><br>
+      <img id="startImg" src="images/foundation.png">
+      <br><br>
+      <button onclick="hideStart()">Start</button>
+    </div>
+
+  </body>
+</html>
+
+<style>
+
+    </style>

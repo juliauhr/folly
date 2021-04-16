@@ -1,0 +1,46 @@
+body{
+  font-family: 'Amatic SC', cursive;
+  font-size:1em;
+  text-align:center;
+}
+#ui{
+  position:fixed;
+  bottom:0px;
+  right:0px;
+  width:100%;
+  text-align:center;
+  font-size:1.2em;
+  padding:1em;
+  background-color:white;
+}
+#blockMenu{
+  display:none;
+}
+#moveMenu{
+  display:none;
+}
+button{
+  font-size:150%;
+  padding:,1em;
+  font-family:monospace;
+  margin:.1em;
+}
+.arrow{
+  font-size:250%;
+}
+#startScreen{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:white;
+  font-size:1.5em;
+}
+#startImg{
+  width:15em;
+}
+.blockButton{
+  width:3em;
+  border:1px solid black;
+}
